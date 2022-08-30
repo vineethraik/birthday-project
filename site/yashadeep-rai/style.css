@@ -1,0 +1,260 @@
+:root {
+    /* color for doom and connected objects */
+    --design-color1: rgb(0, 161, 147);
+    --beam-color:rgb(0, 161, 147);
+    --metal-color: linear-gradient(-90deg, hsl(0, 0%, 78%),
+            hsl(0, 0%, 90%),
+            hsl(0, 0%, 78%),
+            hsl(0, 0%, 70%));
+}
+
+/* Normalizing */
+* {
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* common */
+.width100{
+    width: 100%;
+}
+
+body{
+    background-color: rgb(123, 123, 238);
+    color: white;
+}
+
+/* Heading */
+h3,h1,figcaption{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h3,h1,p,figcaption{
+    font-weight: 1000;
+}
+
+
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Heading image */
+figure {
+    padding: 10px;
+    margin: 10px;
+    background: linear-gradient(to right, #4a00be, #a110b2);
+}
+
+figure>img {
+    border: 2px solid white;
+}
+
+figcaption {
+    font-size: 1.7rem;
+}
+
+/* Extra image gallery wrapper */
+#outer_wrapper {
+    position: relative;
+    background: linear-gradient(to bottom, #3439df, #8717e1);
+}
+
+#wrapper {
+    padding: 50px 10px 50px 10px;
+    position: relative;
+    z-index: 1;
+
+}
+
+/* beam */
+#wrapper::before,#wrapper::after{
+    content: "";
+    width: 70vw;
+    height: 0;
+    margin: 5px auto;
+    border: 10vw solid var(--beam-color);
+    border-width: 15vw 10vw;
+    position: absolute;
+    left: 5vw;
+}
+
+/* beam top */
+#wrapper::before {
+    border-color: var(--beam-color) transparent transparent transparent;
+    top: 0;
+}
+
+/* beam bottom */
+#wrapper::after {
+    border-color: transparent transparent var(--beam-color) transparent;
+    bottom: 0;
+}
+
+/* support structure*/
+#rods::before,
+#rods::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 98%;
+    top: 1%;
+    /* background-color: var(--design-color1); */
+    background: var(--metal-color);
+}
+
+/* left */
+#rods::before {
+    left: 30%;
+}
+
+/* right */
+#rods::after {
+    right: 30%;
+}
+
+/* Holder for rods */
+/* top */
+#holder_top::before,
+#holder_top::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 25px;
+    top: 3%;
+    /* background-color: var(--design-color1); */
+    background: var(--metal-color);
+    border-radius: 0 0 10px 10px;
+}
+
+/* left */
+#holder_top::before {
+    left: calc(30% - 10px);
+}
+
+/* right */
+#holder_top::after {
+    right: calc(30% - 10px);
+}
+
+/* bottom */
+#holder_bottom::before,
+#holder_bottom::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    bottom: 3%;
+    /* background-color: var(--design-color1); */
+    background: var(--metal-color);
+    border-radius: 10px 10px 0 0;
+}
+
+/* left */
+#holder_bottom::before {
+    left: calc(30% - 20px);
+}
+
+/* right */
+#holder_bottom::after {
+    right: calc(30% - 20px);
+}
+
+/* Images */
+.outer_img_wrapper {
+    padding: 10px;
+    margin: 20% 10px;
+    background-color: var(--design-color1);
+    box-shadow: 0px 10px 10px black;
+    position: relative;
+}
+
+
+/* connectors */
+.img_wrapper {
+    width: 100%;
+    position: relative;
+    z-index: 50;
+}
+
+.img_connectors::before,
+.img_connectors::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -10px;
+    /* background-color: var(--design-color1); */
+    background: var(--metal-color);
+    z-index: 100;
+    border-radius: 50%;
+}
+
+/* left */
+.img_connectors::before {
+    left: calc(30% - 22px);
+}
+
+/* right */
+.img_connectors::after {
+    right: calc(30% - 24px);
+}
+
+
+
+
+.img_extra {
+    width: 100%;
+    opacity: .8;
+    border: 2px solid white;
+}
+
+/* wish section */
+
+#wish_div{
+    width: 100%;
+    height: 300px;
+    margin: 25px 0;
+    background: #8717e1;
+    border-radius: 25px;
+}
+
+#greetings{
+    width: 90%;
+    height: 70%;
+    margin-top: 5%;
+}
+
+#wish_button button{
+    width: 150px;
+    height: 40px;
+}
+
+
+
+
+
+
+/*  keep max width of content 700px
+    to ensure no need of design change
+    for the gallery*/
+@media only screen and (min-width:700px) {
+    body {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+    #wish_div{
+        width: 700px;
+        margin: 25px auto;
+    }
+
+    /* fixing the issue caused by using "vw" width*/
+    #wrapper::after,
+    #wrapper::before {
+        width: 500px;
+        border-width: 100px 80px;
+        left: 20px;
+    }
+}
